@@ -27,10 +27,8 @@ public class GameActivity extends AppCompatActivity {
 
 
     @Override
-    protected void onStop() {
-        super.onStop();
-        if(Login.user.getHight_score()[0]<GameView.score) Login.user.getHight_score()[0]=GameView.score;
-        if(MainActivity.ispMusic()) MainActivity.stopMusic();
+    protected void onPause() {
+        super.onPause();
         Intent startMain = new Intent(Intent.ACTION_MAIN);
         startMain.addCategory(Intent.CATEGORY_HOME);
         startMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -52,8 +50,6 @@ public class GameActivity extends AppCompatActivity {
                 .setCancelable(false)
                 .setPositiveButton("Да", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        if(Login.user.getHight_score()[0]<GameView.score) Login.user.getHight_score()[0]=GameView.score;
-                        if(MainActivity.ispMusic()) MainActivity.stopMusic();
                         Intent startMain = new Intent(Intent.ACTION_MAIN);
                         startMain.addCategory(Intent.CATEGORY_HOME);
                         startMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

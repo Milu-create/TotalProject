@@ -16,7 +16,7 @@ import android.view.View;
 import com.google.android.material.snackbar.Snackbar;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, Begin.OnBeginDataListener, Menu.OnMenuDataListener,
-        Login.OnLoginDataListener, Menu_play.OnMenu_playDataListener, Records.OnRecordsDataListener{
+        Login.OnLoginDataListener, Menu_play.OnMenu_playDataListener{
 
     static MediaPlayer base;
 
@@ -104,11 +104,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onMenu_playDataListener(String str) {
-        Snackbar.make(findViewById(R.id.root),str,Snackbar.LENGTH_LONG).show();
-    }
-
-    @Override
-    public void onRecordsDataListener(String str) {
         Snackbar.make(findViewById(R.id.root),str,Snackbar.LENGTH_LONG).show();
     }
 }

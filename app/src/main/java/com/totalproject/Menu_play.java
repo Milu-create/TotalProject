@@ -51,7 +51,7 @@ public class Menu_play extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         user = Login.user;
-        view = inflater.inflate(R.layout.menu_play,null);
+        view = inflater.inflate(R.layout.menu_play,container, false);
         btn_records = view.findViewById(R.id.records);
         btn_records.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,6 +67,7 @@ public class Menu_play extends Fragment {
             }
         });
         info = view.findViewById(R.id.text);
+        info.clearComposingText();
         DelayedPrinter.Word word = new DelayedPrinter.Word(10, user.getName()+", у вас "+user.getPoint()+" монет");
         word.setOffset(50);
         DelayedPrinter.printText(word, info);
