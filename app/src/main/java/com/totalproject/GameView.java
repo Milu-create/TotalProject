@@ -35,13 +35,11 @@ public class GameView extends SurfaceView implements Runnable {
     int screenX;
     int countMisses;
 
-    boolean flag;
     private boolean isGameOver;
     public static int score;
 
     SharedPreferences sharedPreferences;
 
-    static MediaPlayer gameOnsound;
     final MediaPlayer killedEnemysound;
     final MediaPlayer gameOversound;
     private Rect rect;
@@ -161,9 +159,9 @@ public class GameView extends SurfaceView implements Runnable {
             if(isGameOver){
                 paint.setTextSize(150);
                 paint.setTextAlign(Paint.Align.CENTER);
-
                 int yPos=(int) ((canvas.getHeight() / 2) - ((paint.descent() + paint.ascent()) / 2));
                 canvas.drawText("Конец игры",canvas.getWidth()/2,yPos,paint);
+
             }
 
             surfaceHolder.unlockCanvasAndPost(canvas);
@@ -183,7 +181,6 @@ public class GameView extends SurfaceView implements Runnable {
                 score += 1000;
                 boom.change( f.getX(), f.getY());
                 f.changeX();
-                Log.d("RRR upscore", Boolean.toString(Rect.intersects(player.getRect(), f.getRect())));
             }
         }
 
@@ -192,10 +189,9 @@ public class GameView extends SurfaceView implements Runnable {
             if(Rect.intersects(player.getRect(), f.getRect())){
                 killedEnemysound.start();
                 score -= 1000;
+                if(score<0) isGameOver = false;
                 boom.change( f.getX(), f.getY());
                 f.changeX();
-                Log.d("RRR losescore", Boolean.toString(Rect.intersects(player.getRect(), f.getRect())));
-
             }
         }
     }
@@ -221,6 +217,4 @@ public class GameView extends SurfaceView implements Runnable {
         gameThread = new Thread(this);
         gameThread.start();
     }
-
-
 }

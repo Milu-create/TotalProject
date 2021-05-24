@@ -19,7 +19,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Login.OnLoginDataListener, Menu_play.OnMenu_playDataListener{
 
     static MediaPlayer base;
-
     public static final String KEY = "key";
 
     private void loadFragment(Fragment f) {

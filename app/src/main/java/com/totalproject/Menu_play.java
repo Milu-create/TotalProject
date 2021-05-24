@@ -78,8 +78,7 @@ public class Menu_play extends Fragment {
             @Override
             public void onClick(View v) {
                 user.setPoint(user.getPoint()-1);
-                Intent intent=new Intent(getContext(),GameActivity.class);
-                startActivity(intent);
+                startActivity(new Intent(view.getContext(),GameActivity.class));
             }
         });
         return view;
